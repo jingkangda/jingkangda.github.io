@@ -61,4 +61,7 @@
     list-style: none;
 }
 
-
+.add_news{
+    background: orangered;
+    margin: 50px 20px;
+}
