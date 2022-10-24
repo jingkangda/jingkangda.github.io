@@ -1,3 +1,6 @@
+.add_news{
+    margin: 30px 20px;
+}
 .list_main{
     display: flex;
     width: 70%;
@@ -61,7 +64,3 @@
     list-style: none;
 }
 
-.add_news{
-    background: orangered;
-    margin: 50px 20px;
-}
