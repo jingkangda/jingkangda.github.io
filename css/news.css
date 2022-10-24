@@ -1,6 +1,10 @@
 .add_news_aaa{
     margin: 30px 20px;
 }
+
+.add_news_aaa a{
+    background: red;
+}
 .list_main{
     display: flex;
     width: 70%;
@@ -18,10 +22,6 @@
     width: 20%;
     height: 600px;
     /*border: solid red;*/
-}
-
-.add_news{
-    background: dodgerblue;
 }
 
 .top_news{
