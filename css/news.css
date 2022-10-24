@@ -17,6 +17,10 @@
     /*border: solid red;*/
 }
 
+.add_news{
+    background: dodgerblue;
+}
+
 .top_news{
     display: flex;
 }
