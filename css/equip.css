@@ -39,7 +39,7 @@ li {
     /*padding: 10px;*/
 }
 
-.list-head > div {
+.list-head .add {
     background: deepskyblue;
     width: 100px;
     height: 30px;
