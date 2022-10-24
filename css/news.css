@@ -3,7 +3,7 @@
 }
 
 .add_news_aaa a{
-    background: red;
+    background-color: red;
 }
 .list_main{
     display: flex;
