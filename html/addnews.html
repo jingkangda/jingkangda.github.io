@@ -5,6 +5,12 @@
     <title>新闻</title>
     <link rel="stylesheet" href="../css/news.css">
     <link rel="stylesheet" href="../css/common.css">
+    <style>
+        .container{
+            width: 80%;
+            margin-left: 10%;
+        }
+    </style>
 </head>
 <body>
 <div class="index_head">
@@ -14,6 +20,14 @@
     <a href="../html/equip.html" class="web-font">装备</a>
     <a href="../html/news.html" class="web-font">新闻</a>
     <a href="" class="web-font">网站</a>
+</div>
+<div class="container">
+    <label for="title">新闻标题</label>
+    <input type="text" id="title">
+    <label for="description">新闻内容</label>
+    <textarea cols="32" rows="5" id="description"></textarea>
+    <label for="image">新闻图片</label>
+    <input type="file" id="image">
 </div>
 </body>
 </html>
