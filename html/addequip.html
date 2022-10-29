@@ -6,6 +6,9 @@
   <link rel="stylesheet" href="../css/common.css">
   <link rel="stylesheet" href="../css/add equip.css">
   <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <!-- material-style input -->
+  <link rel="stylesheet" href="css/input-material.css">
 
 </head>
 <body>
@@ -18,23 +21,39 @@
   <a href="" class="web-font">网站</a>
 </div>
 <div class="container">
-  <form title="添加装备" method="post">
-    <label for="title">标题</label>
-    <input type="text" id="title"><br>
-    <label for="series">品牌系列</label>
-    <input type="text" id="series"><br>
-    <label for="version">型号版本</label>
-    <input type="text" id="version"><br>
-    <label for="production">产品类型</label>
-    <input type="text" id="production"><br>
-    <label for="time">上市时间</label>
-    <input type="text" id="time"><br>
-    <label for="color">颜色配置</label>
-    <input type="text" id="color"><br>
-    <label for="disposition">轮子配置</label>
-    <input type="text" id="disposition"><br>
-    <label for="describe">标题</label>
-    <input type="text" id="describe"><br>
+  <form title="添加装备" method="post" id="contact-form">
+    <div class="form-group input-material">
+      <label for="title">标题</label>
+      <input type="text" id="title" class="form-control"><br>
+    </div>
+    <div class="form-group input-material">
+      <label for="series">品牌系列</label>
+      <input type="text" id="series" class="form-control"><br>
+    </div>
+    <div class="form-group input-material">
+      <label for="version">型号版本</label>
+      <input type="text" id="version" class="form-control"><br>
+    </div>
+    <div class="form-group input-material">
+      <label for="production">产品类型</label>
+      <input type="text" id="production" class="form-control"><br>
+    </div>
+    <div class="form-group input-material">
+      <label for="time">上市时间</label>
+      <input type="text" id="time" class="form-control"><br>
+    </div>
+    <div class="form-group input-material">
+      <label for="color">颜色配置</label>
+      <input type="text" id="color" class="form-control"><br>
+    </div>
+    <div class="form-group input-material">
+      <label for="disposition">轮子配置</label>
+      <input type="text" id="disposition" class="form-control"><br>
+    </div>
+    <div class="form-group input-material">
+      <label for="describe">标题</label>
+      <input type="text" id="describe" class="form-control"><br>
+    </div>
     <input type="submit" value="添加">
   </form>
 </div>
