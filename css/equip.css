@@ -45,7 +45,7 @@ li {
     height: 30px;
     font-weight: bold;
     font-size: medium;
-    margin: 0 50px;
+    margin-left: 50px;
 }
 
 .equip {
@@ -73,3 +73,40 @@ li {
     font-size: small;
 }
 
+form.example input[type=text] {
+    font-size: 17px;
+    border: 1px solid grey;
+    background: #f1f1f1;
+}
+
+form.example button {
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+}
+
+form.example button:hover {
+    background: #0b7dda;
+}
+
+form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.add-form{
+    display: none;
+}
+
+#contact-form input{
+    margin: 10px 0;
+}
+
+.show{
+    display: block;
+}
+
+.hide{
+    display: none;
+}
