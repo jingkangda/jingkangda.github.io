@@ -54,7 +54,7 @@
                 <button type="submit"><i class="fa fa-search">搜索</i></button>
             </form>
         </div>
-        <form title="添加装备" method="post" id="contact-form" class="hide">
+        <form title="添加装备" method="post" id="contact-form" hidden>
             <div class="form-group input-material">
                 <label for="title">标题</label>
                 <input type="text" id="title" class="form-control"><br>
@@ -120,8 +120,7 @@
 <script>
 
     $(".add").click(function () {
-        $(".equip").addClass("hide");
-        $("#contact-form").toggleClass("hide");
+
     })
 </script>
 </body>
