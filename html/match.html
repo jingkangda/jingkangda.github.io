@@ -6,17 +6,10 @@
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/match.css">
     <link rel="stylesheet" href="../css/normalize.css">
-
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/header.js"></script>
 </head>
 <body>
-<div class="index_head">
-    <a href="../index.html" class="web-font">首页</a>
-    <a href="" class="web-font">视频</a>
-    <a href="../html/match.html" class="web-font">比赛</a>
-    <a href="../html/equip.html" class="web-font">装备</a>
-    <a href="../html/news.html" class="web-font">新闻</a>
-    <a href="" class="web-font">网站</a>
-</div>
 <div class="events_channel">
     <div class="events_hot">
         <div class="events_focus">
@@ -92,7 +85,9 @@
 </div>
 <div class="site-foot"></div>
 <script>
-
+    window.onload = function () {
+        $("body").prepend(Header);
+    }
 </script>
 </body>
 </html>

@@ -6,17 +6,13 @@
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/news.css">
     <link rel="stylesheet" href="../css/normalize.css">
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/header.js"></script>
 </head>
 <body>
-<div class="index_head">
-    <a href="../index.html" class="web-font">首页</a>
-    <a href="" class="web-font">视频</a>
-    <a href="../html/match.html" class="web-font">比赛</a>
-    <a href="../html/equip.html" class="web-font">装备</a>
-    <a href="../html/news.html" class="web-font">新闻</a>
-    <a href="" class="web-font">网站</a>
+<div class="add_news_aaa">
+    <button><a href="../html/addnews.html">添加新闻</a></button>
 </div>
-<div class="add_news_aaa"><button><a href="../html/addnews.html">添加新闻</a></button></div>
 <div class="list_main">
     <div class="list_left">
         <div class="top_news">
@@ -25,7 +21,8 @@
                     <img src="../images/news_one.jpg" alt="2019年江苏省轮滑球锦标赛顺利举办，圣巴、斯坦利、威德推动轮滑球运动发展,轮滑新闻,大轮滑网"></a>
             </div>
             <div class="top_news_text">
-                <a href="http://www.dalunhua.com/news/industry/20200405331.html" target="_blank"><h2>2019年江苏省轮滑球锦标赛顺利举办，圣巴、斯坦利、威德推动轮滑球运动发展</h2></a>
+                <a href="http://www.dalunhua.com/news/industry/20200405331.html" target="_blank"><h2>
+                    2019年江苏省轮滑球锦标赛顺利举办，圣巴、斯坦利、威德推动轮滑球运动发展</h2></a>
                 <div class="top_news_description">
                     2019年江苏省轮滑球锦标赛顺利举办，圣巴、斯坦利、威德推动轮滑球运动发展.2019年江苏省轮滑球锦标赛顺利举办，圣巴、斯坦利、威德推动轮滑球运动发展。..
                 </div>
@@ -38,12 +35,16 @@
     <div class="list_right">
         <div class="tab_title"><a href="http://www.dalunhua.com/video/matchs/" target="_blank">精彩赛事</a></div>
         <div class="sidebar_image_only">
-            <li><a href="/video/matchs/20200406136.html" target="_blank" title="2014全国自由式轮滑锦标赛 花式绕桩成年女子组"><img src="../images/top_news_imageone.jpg" alt="2014全国自由式轮滑锦标赛 花式绕桩成年女子组" width="100%"></a></li>
+            <li><a href="/video/matchs/20200406136.html" target="_blank" title="2014全国自由式轮滑锦标赛 花式绕桩成年女子组"><img
+                    src="../images/top_news_imageone.jpg" alt="2014全国自由式轮滑锦标赛 花式绕桩成年女子组" width="100%"></a></li>
         </div>
     </div>
 </div>
-<div class="site_foot">
+<script>
+    window.onload = function () {
+        $("body").prepend(Header);
+    }
 
-</div>
+</script>
 </body>
 </html>

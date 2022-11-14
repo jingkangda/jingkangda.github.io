@@ -95,7 +95,7 @@ form.example::after {
     display: table;
 }
 
-.add-form{
+#contact-form{
     display: none;
 }
 
