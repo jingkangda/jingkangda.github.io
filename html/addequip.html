@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .wrapper{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            margin-top: 200px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div></div>
+    <div class="container">
+        <form title="添加装备" id="contact-form" style="width: 500px;">
+            品牌系列:<input type="text" id="series" class="form-control"><br>
+            型号版本:<input type="text" id="version" class="form-control"><br>
+            产品类型:<input type="text" id="production" class="form-control"><br>
+            上市时间:<input type="text" id="time" class="form-control"><br>
+            颜色配置:<input type="text" id="color" class="form-control"><br>
+            轮子配置:<input type="text" id="disposition" class="form-control"><br>
+            详情:<input type="text" id="describe" class="form-control"><br>
+            图片:<input type="file"/><br>
+            <input type="button" class="form-control" value="添加" onclick="AddEquip()">
+        </form>
+    </div>
+    <div></div>
+</div>
+
+</body>
+</html>

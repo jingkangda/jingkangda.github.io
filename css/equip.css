@@ -13,16 +13,10 @@ li {
     margin-left: 10%;
 }
 
-.sidebar {
-    display: grid;
-    grid-template-rows: 25% 35% 40%;
-}
-
 .equip_list {
     display: grid;
-    grid-template-rows: 1fr 3fr 1fr;
+    grid-template-rows: 0.5fr 1.5fr 0.5fr 4fr 4fr;
     margin: 30px 0;
-    padding: 10px;
 }
 
 
@@ -95,18 +89,56 @@ form.example::after {
     display: table;
 }
 
-#contact-form{
-    display: none;
-}
-
 #contact-form input{
-    margin: 10px 0;
+    margin: 20px 40px;
+    height: 25px;
+    width: 100%;
 }
 
-.show{
-    display: block;
+/*模态框*/
+.modal {
+    display: none; /* 默认隐藏 */
+    position: fixed; /* 根据浏览器定位 */
+    z-index: 1; /* 放在顶部 */
+    left: 0;
+    top: 0;
+    width: 60%; /* 全宽 */
+    height: 100%; /* 全高 */
+    /*overflow: auto; !* 允许滚动 *!*/
+    margin-left: 20%;
 }
-
-.hide{
-    display: none;
+/*模态框内容*/
+.modal-content {
+    display: flex; /*采用flexbox布局*/
+    flex-direction: column; /*垂直排列*/
+    position: relative;
+    background-color: #fefefe;
+    margin: 10px auto; /*距顶部15% 水平居中*/
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    animation: topDown 0.4s; /*自定义动画，从模态框内容上到下出现*/
+}
+@keyframes topDown {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+/*模态框头部*/
+.modal-header {
+    display: flex; /*采用flexbox布局*/
+    flex-direction: row; /*水平布局*/
+    align-items: center; /*内容垂直居中*/
+    justify-content: space-between;
+}
+/*关闭X 样式*/
+.closeBtn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.closeBtn:hover {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }

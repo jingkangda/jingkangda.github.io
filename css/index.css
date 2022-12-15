@@ -20,13 +20,11 @@ li{
 .hot_middle{
     display: grid;
     margin-left: 20px;
-    /*border: solid red;*/
     grid-template-rows: 1fr 1fr 1fr;
 }
 
 .hot_right{
     display: grid;
-    /*border: solid blue;*/
     margin-left: 30px;
     grid-template-rows: 1fr 1fr;
 }
@@ -66,13 +64,8 @@ li{
 .right_equip h2{
     text-align: left;
     margin-right: 15px;
-    /*border: solid deeppink;*/
 }
 
-
-/*.equip li{*/
-/*    display: flex;*/
-/*}*/
 .equip-index{
     display: inline-block;
     margin-right: 30px;
