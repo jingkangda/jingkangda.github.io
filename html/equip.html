@@ -149,9 +149,12 @@
         modalBox.init();
 
     })();
-    window.onload(function () {
-        
-    })
+    window.onload = function () {
+        if(!localStorage.getItem("equips")){
+            localStorage.setItem("equips",null);
+        }
+        const equips = localStorage.getItem()
+    }
 </script>
 </body>
 </html>
