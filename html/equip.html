@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/equip.css">
     <link rel="stylesheet" href="../css/normalize.css">
-    <script src="../js/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="../js/jquery-1.11.0.min.js"></script>
     <script src="../js/header.js"></script>
 </head>
 <body>
@@ -153,6 +153,7 @@
         if(!localStorage.getItem("equips")){
             localStorage.setItem("equips",null);
         }
+        $("body").prepend(Header);
         const equips = localStorage.getItem()
     }
 </script>
