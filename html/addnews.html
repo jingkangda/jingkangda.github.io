@@ -10,6 +10,7 @@
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!-- material-style input -->
     <link rel="stylesheet" href="../css/input-material.css">
+    <script src="../js/header.js"></script>
     <style>
         .container {
             width: 80%;
@@ -18,14 +19,6 @@
     </style>
 </head>
 <body>
-<div class="index_head">
-    <a href="../index.html" class="web-font">首页</a>
-    <a href="" class="web-font">视频</a>
-    <a href="../html/match.html" class="web-font">比赛</a>
-    <a href="../html/equip.html" class="web-font">装备</a>
-    <a href="../html/news.html" class="web-font">新闻</a>
-    <a href="" class="web-font">网站</a>
-</div>
 <div class="container">
     <form id="contact-form">
         <div class="form-group input-material">
@@ -51,5 +44,10 @@
         crossorigin="anonymous"></script>
 <!-- Materialise-inputs JS -->
 <script src="../js/materialize-inputs.jquery.js"></script>
+<script>
+    window.onload = function () {
+        $("body").prepend(Header);
+    }
+</script>
 </body>
 </html>

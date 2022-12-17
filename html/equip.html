@@ -44,34 +44,33 @@
         </div>
 
         <ul class="equip">
-            <li>
-                <img src="../images/equip-one.jpg" alt="斯坦利,斯坦利-可调速滑鞋(2018儿童款)速滑鞋" width="150" height="150">
-                <div class="item">
-                    <h3 style="border: solid green;padding: 0;margin: 0;border: 0;">
-                        <a style="color: dodgerblue;font-size: larger">斯坦利 可调速滑鞋(2018儿童款)速滑鞋</a>
-                    </h3>
-                    <div class="detail">
-                        <ul class="list-param">
-                            <li><span>品牌系列：</span>斯坦利 海豚</li>
-                            <li><span>型号版本：</span>可调速滑鞋(2018儿童款)</li>
-                            <li><span>产品类型：</span>速滑鞋</li>
-                        </ul>
-                        <ul class="list-param">
-                            <li><span>上市时间：</span>2018-04</li>
-                            <li><span>颜色配置：</span>蓝色 粉色</li>
-                            <li><span>轮子配置：</span>85A [!--wheels_material--]</li>
-                        </ul>
-                        <button style="background: deepskyblue;margin-top: 20px;border-radius: 3px;width: 100px;height: 30px;">
-                            详细信息
-                        </button>
-                    </div>
-                    <div style="font-size: small">
-                        斯坦利海豚系列中的可调速滑鞋，亮点很明显：三轮四轮可随意切换、鞋头采用特殊的调节方式可伸缩调节，同时非常稳定，满足速滑选手的高要求。
-                    </div>
-                </div>
-            </li>
+<!--            <li>-->
+<!--                <img src="../images/equip-one.jpg" alt="斯坦利,斯坦利-可调速滑鞋(2018儿童款)速滑鞋" width="150" height="150">-->
+<!--                <div class="item">-->
+<!--                    <h3 style="border: solid green;padding: 0;margin: 0;border: 0;">-->
+<!--                        <a style="color: dodgerblue;font-size: larger">斯坦利 可调速滑鞋(2018儿童款)速滑鞋</a>-->
+<!--                    </h3>-->
+<!--                    <div class="detail">-->
+<!--                        <ul class="list-param">-->
+<!--                            <li><span>品牌系列：</span>斯坦利 海豚</li>-->
+<!--                            <li><span>型号版本：</span>可调速滑鞋(2018儿童款)</li>-->
+<!--                            <li><span>产品类型：</span>速滑鞋</li>-->
+<!--                        </ul>-->
+<!--                        <ul class="list-param">-->
+<!--                            <li><span>上市时间：</span>2018-04</li>-->
+<!--                            <li><span>颜色配置：</span>蓝色 粉色</li>-->
+<!--                            <li><span>轮子配置：</span>85A [!&#45;&#45;wheels_material&#45;&#45;]</li>-->
+<!--                        </ul>-->
+<!--                        <button class="delete" style="background: deepskyblue;margin-top: 20px;border-radius: 3px;width: 100px;height: 30px;">-->
+<!--                            删除-->
+<!--                        </button>-->
+<!--                    </div>-->
+<!--                    <div style="font-size: small">-->
+<!--                        斯坦利海豚系列中的可调速滑鞋，亮点很明显：三轮四轮可随意切换、鞋头采用特殊的调节方式可伸缩调节，同时非常稳定，满足速滑选手的高要求。-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </li>-->
         </ul>
-
     </div>
 
 </div>
@@ -92,7 +91,7 @@
                     颜色配置:<input type="text" id="color" class="form-control"><br>
                     轮子配置:<input type="text" id="disposition" class="form-control"><br>
                     详情:<input type="text" id="describe" class="form-control"><br>
-                    图片:<input type="file"/><br>
+                    图片:<input type="file" value="请添加图片链接"/><br>
                 </form>
             </div>
             <div class="modal-footer">
@@ -116,7 +115,6 @@
         modalBox.AddBtn = document.getElementsByClassName("AddBtn")[0]
         /*模态框显示*/
         modalBox.show = function () {
-            console.log(this.modal);
             this.modal.style.display = "block";
         }
         /*模态框关闭*/
@@ -142,6 +140,22 @@
                 that.close();
             }
             this.AddBtn.onclick = function () {
+                var series = $("#series").val();
+                var version = $("#version").val();
+                var production = $('#production').val();
+                var time = $("#time").val();
+                var color = $("#color").val();
+                var disposition = $("#disposition").val();
+                var describe = $("#describe").val();
+                if(!localStorage.getItem("equips")){
+                    localStorage.setItem("equips",JSON.stringify([{"id":1,"series":series,"version":version,"production":production,"time":time,"color":color,"disposition":disposition,"describe":describe}]));
+                }
+                else {
+                    let equips = JSON.parse(localStorage.getItem("equips"));
+                    equips.push({"id":parseInt(equips.length)+1,"series":series,"version":version,"production":production,"time":time,"color":color,"disposition":disposition,"describe":describe})
+                    localStorage.setItem("equips",JSON.stringify(equips));
+                }
+                window.location.reload();
                 that.close();
             }
             this.outsideClick();
@@ -150,12 +164,41 @@
 
     })();
     window.onload = function () {
-        if(!localStorage.getItem("equips")){
-            localStorage.setItem("equips",null);
-        }
         $("body").prepend(Header);
-        const equips = localStorage.getItem()
+        let equips = JSON.parse(localStorage.getItem("equips"));
+        for(let equip of equips){
+            const data = `<li>
+                <img src="../images/equip-one.jpg" alt="斯坦利,斯坦利-可调速滑鞋(2018儿童款)速滑鞋" width="150" height="150">
+                <div class="item">
+                    <h3 style="border: solid green;padding: 0;margin: 0;border: 0;">
+                        <a style="color: dodgerblue;font-size: larger">${equip.series}</a>
+                    </h3>
+                    <div class="detail">
+                        <ul class="list-param">
+                            <li><span>品牌系列：</span>${equip.series}</li>
+                            <li><span>型号版本：</span>${equip.version}</li>
+                            <li><span>产品类型：</span>${equip.production}</li>
+                        </ul>
+                        <ul class="list-param">
+                            <li><span>上市时间：</span>${equip.time}</li>
+                            <li><span>颜色配置：</span>${equip.color}</li>
+                            <li><span>轮子配置：</span>${equip.disposition}</li>
+                        </ul>
+                        <button class="delete" style="background: deepskyblue;margin-top: 20px;border-radius: 3px;width: 100px;height: 30px;">
+                            删除
+                        </button>
+                    </div>
+                    <div style="font-size: small">
+                        ${equip.describe}
+                    </div>
+                </div>
+            </li>`
+            $(".equip").append(data);
+        }
     }
+    $(".equip").delegate(".delete","click",function () {
+        
+    })
 </script>
 </body>
 </html>
