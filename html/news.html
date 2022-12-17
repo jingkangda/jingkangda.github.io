@@ -11,24 +11,21 @@
 </head>
 <body>
 <div class="add_news_aaa">
-    <button><a href="../html/addnews.html">添加新闻</a></button>
+    <button style="background-color: #007bff;width: 200px;height: 40px;margin:10px;float: right;" id="add">添加新闻</button>
 </div>
 <div class="list_main">
     <div class="list_left">
-        <div class="top_news">
-            <div class="top_news_image">
-                <img src="../images/news_one.jpg" alt="2019年江苏省轮滑球锦标赛顺利举办，圣巴、斯坦利、威德推动轮滑球运动发展,轮滑新闻,大轮滑网">
-            </div>
-            <div class="top_news_text">
-                <h2>2019年江苏省轮滑球锦标赛顺利举办，圣巴、斯坦利、威德推动轮滑球运动发展</h2>
-                <div class="top_news_description">
-                    2019年江苏省轮滑球锦标赛顺利举办，圣巴、斯坦利、威德推动轮滑球运动发展.2019年江苏省轮滑球锦标赛顺利举办，圣巴、斯坦利、威德推动轮滑球运动发展。..
-                </div>
-            </div>
-        </div>
-        <div class="list_article">
-
-        </div>
+<!--        <div class="news">-->
+<!--            <div class="top_news_image">-->
+<!--                <img src="../images/news_one.jpg" alt="2019年江苏省轮滑球锦标赛顺利举办，圣巴、斯坦利、威德推动轮滑球运动发展,轮滑新闻,大轮滑网">-->
+<!--            </div>-->
+<!--            <div class="top_news_text">-->
+<!--                <h2>2019年江苏省轮滑球锦标赛顺利举办，圣巴、斯坦利、威德推动轮滑球运动发展</h2>-->
+<!--                <div class="top_news_description">-->
+<!--                    2019年江苏省轮滑球锦标赛顺利举办，圣巴、斯坦利、威德推动轮滑球运动发展.2019年江苏省轮滑球锦标赛顺利举办，圣巴、斯坦利、威德推动轮滑球运动发展。..-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
     </div>
     <div class="list_right">
         <div class="tab_title"><a>精彩赛事</a></div>
@@ -40,8 +37,34 @@
 <script>
     window.onload = function () {
         $("body").prepend(Header);
+        const news = JSON.parse(localStorage.getItem("news"));
+        for(let item of news){
+            let tmp = `<div class="news">
+            <div class="top_news_image">
+                <img src="../images/news_one.jpg" alt="2019年江苏省轮滑球锦标赛顺利举办，圣巴、斯坦利、威德推动轮滑球运动发展,轮滑新闻,大轮滑网">
+            </div>
+            <div class="top_news_text">
+                <h2>${item.id+item.title}</h2>
+                <div class="top_news_description">
+                    ${item.content}
+                </div>
+                <button class="delete_news" style="background-color: #007bff;width: 80px;height: 30px">删除</button>
+            </div>
+        </div>`
+            $(".list_left").append(tmp);
+        }
     }
-
+    $("#add").click(function () {
+        window.location.replace('../html/addnews.html');
+    })
+    $(".list_left").on("click",".delete_news",function () {
+        const  id = $(this).prevUntil("h2").html()[0];
+        console.log(id);
+        let news = JSON.parse(localStorage.getItem("news"));
+        news.splice(id,1);
+        localStorage.setItem("news",JSON.stringify(news));
+        window.location.reload();
+    })
 </script>
 </body>
 </html>
