@@ -143,16 +143,22 @@
                 let color = $("#color").val();
                 let disposition = $("#disposition").val();
                 let describe = $("#describe").val();
-                if(!localStorage.getItem("equips")){
-                    localStorage.setItem("equips",JSON.stringify([{"id":1,"series":series,"version":version,"production":production,"time":time,"color":color,"disposition":disposition,"describe":describe}]));
+                if(series && version && production && time && color && disposition && describe){
+                    if(!localStorage.getItem("equips")){
+                        localStorage.setItem("equips",JSON.stringify([{"id":1,"series":series,"version":version,"production":production,"time":time,"color":color,"disposition":disposition,"describe":describe}]));
+                    }
+                    else {
+                        let equips = JSON.parse(localStorage.getItem("equips"));
+                        equips.push({"id":parseInt(equips.length)+1,"series":series,"version":version,"production":production,"time":time,"color":color,"disposition":disposition,"describe":describe})
+                        localStorage.setItem("equips",JSON.stringify(equips));
+                    }
+                    window.location.reload();
+                    that.close();
                 }
                 else {
-                    let equips = JSON.parse(localStorage.getItem("equips"));
-                    equips.push({"id":parseInt(equips.length)+1,"series":series,"version":version,"production":production,"time":time,"color":color,"disposition":disposition,"describe":describe})
-                    localStorage.setItem("equips",JSON.stringify(equips));
+                    alert("请输入完整表单项");
                 }
-                window.location.reload();
-                that.close();
+
             }
             this.outsideClick();
         }

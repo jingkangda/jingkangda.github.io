@@ -55,14 +55,19 @@
     $("#add").click(function () {
         let title = $("#title").val();
         let content = $("#description").val();
-        if(!localStorage.getItem("news")){
-            localStorage.setItem("news",JSON.stringify([{"id":1,"title":title,"content":content}]));
-        }else {
-            let news = JSON.parse(localStorage.getItem("news"));
-            news.push({"id":news.length+1,"title":title,"content":content});
-            localStorage.setItem("news",JSON.stringify(news));
+        if(title && content){
+            if(!localStorage.getItem("news")){
+                localStorage.setItem("news",JSON.stringify([{"id":1,"title":title,"content":content}]));
+            }else {
+                let news = JSON.parse(localStorage.getItem("news"));
+                news.push({"id":news.length+1,"title":title,"content":content});
+                localStorage.setItem("news",JSON.stringify(news));
+            }
+            window.location.replace("../html/news.html")
         }
-        window.location.replace("../html/news.html")
+        else {
+            alert("请输入完整表单项")
+        }
     })
 </script>
 </body>
