@@ -1,0 +1,54 @@
+li{
+    list-style: none;
+}
+
+.container{
+    width: 50%;
+    margin-left: 25%;
+    margin-top:60px;
+    background-color: #ced4da;
+}
+.BaseInfo{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    height: 300px;
+}
+
+.Base{
+    text-align: center;
+    line-height:300px ;
+}
+
+ul > li{
+    line-height: 40px;
+    display: flex;
+}
+
+li > span{
+    width: 100px;
+    margin-right: 50px;
+    display: inline-block;
+}
+
+.Size{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    height: 120px;
+}
+
+.Siz{
+    line-height: 120px;
+    text-align: center;
+}
+
+.Up{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    height: 250px;
+}
+
+.U{
+    line-height:250px ;
+    text-align: center;
+}
+

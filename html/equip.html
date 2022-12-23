@@ -57,9 +57,19 @@
                             <li><span>颜色配置：</span>蓝色 粉色</li>
                             <li><span>轮子配置：</span>85A [!--wheels_material--]</li>
                         </ul>
-                        <button class="delete" style="background: deepskyblue;margin-top: 20px;border-radius: 3px;width: 100px;height: 30px;">
-                            删除
-                        </button>
+                        <div>
+                            <button class="delete"
+                                    style="background: deepskyblue;margin-top: 20px;border-radius: 3px;width: 100px;height: 30px;">
+                                删除
+                            </button>
+                            <a href="detail.html">
+                                <button class="detailed"
+                                        style="background: greenyellow;margin-top: 20px;border-radius: 3px;width: 100px;height: 30px;">
+                                    详情
+                                </button></a>
+
+                        </div>
+
                     </div>
                     <div style="font-size: small">
                         斯坦利海豚系列中的可调速滑鞋，亮点很明显：三轮四轮可随意切换、鞋头采用特殊的调节方式可伸缩调节，同时非常稳定，满足速滑选手的高要求。
@@ -87,11 +97,12 @@
                     颜色配置:<input type="text" id="color" class="form-control"><br>
                     轮子配置:<input type="text" id="disposition" class="form-control"><br>
                     详情:<input type="text" id="describe" class="form-control"><br>
-                    图片:<input type="file" value="请添加图片链接"/><br>
+                    图片:<input type="file" id="file"/><br>
                 </form>
             </div>
             <div class="modal-footer">
-                <input class="AddBtn" type="button" value="添加" style="height: 50px;width: 80px;background-color: #0b7dda">
+                <input class="AddBtn" type="button" value="添加"
+                       style="height: 50px;width: 80px;background-color: #0b7dda">
             </div>
         </div>
     </div>
@@ -143,19 +154,44 @@
                 let color = $("#color").val();
                 let disposition = $("#disposition").val();
                 let describe = $("#describe").val();
-                if(series && version && production && time && color && disposition && describe){
-                    if(!localStorage.getItem("equips")){
-                        localStorage.setItem("equips",JSON.stringify([{"id":1,"series":series,"version":version,"production":production,"time":time,"color":color,"disposition":disposition,"describe":describe}]));
+                let file = $("#file")[0];
+                if (series && version && production && time && color && disposition && describe) {
+                    let reader = new FileReader();
+                    let cover = null;
+                    reader.onload = function (e) {
+                        cover = e.target.result;  //或者 e.target.result都是一样的，都是base64码
+                        if (!localStorage.getItem("equips")) {
+                            localStorage.setItem("equips", JSON.stringify([{
+                                "id": 1,
+                                "series": series,
+                                "version": version,
+                                "production": production,
+                                "time": time,
+                                "color": color,
+                                "disposition": disposition,
+                                "describe": describe,
+                                "file": cover
+                            }]));
+                        } else {
+                            let equips = JSON.parse(localStorage.getItem("equips"));
+                            equips.push({
+                                "id": parseInt(equips.length) + 1,
+                                "series": series,
+                                "version": version,
+                                "production": production,
+                                "time": time,
+                                "color": color,
+                                "disposition": disposition,
+                                "describe": describe,
+                                "file": cover
+                            })
+                            localStorage.setItem("equips", JSON.stringify(equips));
+                        }
+                        window.location.reload();
+                        that.close();
                     }
-                    else {
-                        let equips = JSON.parse(localStorage.getItem("equips"));
-                        equips.push({"id":parseInt(equips.length)+1,"series":series,"version":version,"production":production,"time":time,"color":color,"disposition":disposition,"describe":describe})
-                        localStorage.setItem("equips",JSON.stringify(equips));
-                    }
-                    window.location.reload();
-                    that.close();
-                }
-                else {
+                    reader.readAsDataURL(file.files[0])
+                } else {
                     alert("请输入完整表单项");
                 }
 
@@ -168,12 +204,12 @@
     window.onload = function () {
         $("body").prepend(Header);
         let equips = JSON.parse(localStorage.getItem("equips"));
-        for(let equip of equips){
+        for (let equip of equips) {
             const data = `<li>
-                <img src="../images/equip-one.jpg" alt="斯坦利,斯坦利-可调速滑鞋(2018儿童款)速滑鞋" width="150" height="150">
+                <img src="${equip.file}" alt="斯坦利,斯坦利-可调速滑鞋(2018儿童款)速滑鞋" width="150" height="150">
                 <div class="item">
                     <h3 style="border: solid green;padding: 0;margin: 0;border: 0;">
-                        <a style="color: dodgerblue;font-size: larger">${equip.id+equip.series}</a>
+                        <a style="color: dodgerblue;font-size: larger">${equip.id + equip.series}</a>
                     </h3>
                     <div class="detail">
                         <ul class="list-param">
@@ -186,9 +222,11 @@
                             <li><span>颜色配置：</span>${equip.color}</li>
                             <li><span>轮子配置：</span>${equip.disposition}</li>
                         </ul>
-                        <button class="delete" style="background: deepskyblue;margin-top: 20px;border-radius: 3px;width: 100px;height: 30px;">
-                            删除
-                        </button>
+                        <div>
+                            <button class="delete" style="background: deepskyblue;margin-top: 20px;border-radius: 3px;width: 100px;height: 30px;">
+                                删除
+                            </button>
+                        </div>
                     </div>
                     <div style="font-size: small">
                         ${equip.describe}
@@ -198,19 +236,22 @@
             $(".equip").append(data);
         }
     }
-    $(".equip").on("click",".delete",function () {
-        const id = $(this).parent().prev().children("a").html()[0];
+    $(".equip").on("click", ".delete", function () {
+        const id = $(this).parent().parent().prev().children("a").html()[0];
         console.log(id);
         let equips = [...JSON.parse(localStorage.getItem("equips"))];
         console.log(equips);
-        equips.splice(id-1,1);
+        equips.splice(id - 1, 1);
         let count = 1;
-        for(let equip of equips){
+        for (let equip of equips) {
             equip.id = count++;
         }
-        localStorage.setItem("equips",JSON.stringify(equips));
+        localStorage.setItem("equips", JSON.stringify(equips));
         window.location.reload();
     })
+    // $(".equip").on("click",".detailed",function () {
+    //     const
+    // })
 </script>
 </body>
 </html>

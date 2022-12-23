@@ -55,15 +55,22 @@
     $("#add").click(function () {
         let title = $("#title").val();
         let content = $("#description").val();
+        let image = $("#image")[0];
         if(title && content){
-            if(!localStorage.getItem("news")){
-                localStorage.setItem("news",JSON.stringify([{"id":1,"title":title,"content":content}]));
-            }else {
-                let news = JSON.parse(localStorage.getItem("news"));
-                news.push({"id":news.length+1,"title":title,"content":content});
-                localStorage.setItem("news",JSON.stringify(news));
+            let reader=new FileReader();
+            let cover = null;
+            reader.onload=function(e){
+                cover = e.target.result;
+                if(!localStorage.getItem("news")){
+                    localStorage.setItem("news",JSON.stringify([{"id":1,"title":title,"content":content,"image":cover}]));
+                }else {
+                    let news = JSON.parse(localStorage.getItem("news"));
+                    news.push({"id":news.length+1,"title":title,"content":content,"image":cover});
+                    localStorage.setItem("news",JSON.stringify(news));
+                }
+                window.location.replace("../html/news.html")
             }
-            window.location.replace("../html/news.html")
+            reader.readAsDataURL(image.files[0]);
         }
         else {
             alert("请输入完整表单项")
